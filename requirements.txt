@@ -1,0 +1,4 @@
+conventional-commits-check==1.0.3
+django==4.1.7
+django-upgrade==1.13.0
+pyupgrade==3.3.1
