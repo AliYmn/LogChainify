@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
+    'celery',
     'log',
 ]
 
@@ -173,8 +175,6 @@ JAZZMIN_SETTINGS = {
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
         # model admin to link to (Permissions checked against model)
         {"model": "auth.User"},
-        # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "books"},
     ],
     #############
     # User Menu #
@@ -191,7 +191,7 @@ JAZZMIN_SETTINGS = {
     # Hide these apps when generating side menu e.g (auth)
     "hide_apps": [],
     # Hide these models when generating side menu (e.g auth.user)
-    "hide_models": [],
+    "hide_models": ['django_celery_results.groupresult'],
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
     "order_with_respect_to": [
         "auth",
@@ -205,6 +205,7 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "log.LogEntry": "fas fa-box",
         "log.UserProfile": "fas fa-user-plus",
+        "django_celery_results.taskresult": "fas fa-tasks",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",
@@ -272,3 +273,8 @@ JAZZMIN_UI_TWEAKS = {
     },
     "actions_sticky_top": True,
 }
+
+
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_TRACK_STARTED = True
