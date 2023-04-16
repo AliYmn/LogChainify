@@ -1,0 +1,20 @@
+option {
+    color: black;
+}
+
+a#jazzy-logo:hover {
+    color:#20c997;
+}
+
+span.brand-text.font-weight-light:hover {
+    color:#20c997;
+}
+
+button.btn.btn-primary{
+    background:#20c997;
+}
+
+.selector-chosen h2 {
+    background: #20c997;
+    color: #fff;
+}
