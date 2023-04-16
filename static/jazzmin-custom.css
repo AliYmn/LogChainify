@@ -18,3 +18,7 @@ button.btn.btn-primary{
     background: #20c997;
     color: #fff;
 }
+
+span.select2-results {
+    background-color:white;
+}
