@@ -30,13 +30,9 @@ class LogEntry(models.Model):
     data = models.TextField()
     BLOCKCHAIN_CHOICES = [
         ('eth', 'Ethereum'),
-        ('btc', 'Bitcoin'),
-        ('doge', 'Dogecoin'),
-        ('ltc', 'Litecoin'),
     ]
     blockchain = models.CharField(max_length=4, choices=BLOCKCHAIN_CHOICES, default='eth')
     data_hash = models.CharField(max_length=100, default="Pending...")
-    secure_hash = models.CharField(max_length=100, default="Pending...")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

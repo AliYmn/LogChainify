@@ -10,18 +10,16 @@ from .models import LogEntry, UserProfile
 class LogEntryAdmin(admin.ModelAdmin):
     list_display = ('user_profile', 'data', 'get_link', 'blockchain', 'created_at', 'updated_at')
     search_fields = ('user_profile',)
-    # readonly_fields = ('data_hash', 'secure_hash')
     exclude = ('data_hash',)
 
-    def save_model(self, request, obj, form, change):
-        secure_hash_txt = (
-            str(obj.user_profile.unique_id + obj.user_profile.user_id) + str(obj.data) + str(obj.blockchain)
-        )
-        secure_hash = hashlib.sha256(secure_hash_txt.encode('utf-8')).hexdigest()
-        if obj.secure_hash != "Pending..." and secure_hash != obj.secure_hash:
-            messages.error(request, "Age must be greater than or equal to 18")
-            return
-        super().save_model(request, obj, form, change)
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request):
+        return False
 
     @staticmethod
     def get_link(obj):

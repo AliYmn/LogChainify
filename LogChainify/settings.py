@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'celery',
     'log',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -205,6 +206,8 @@ JAZZMIN_SETTINGS = {
         "auth.Group": "fas fa-users",
         "log.LogEntry": "fas fa-box",
         "log.UserProfile": "fas fa-user-plus",
+        "blog.Post": "fas fa-book",
+        "blog.Comment": "fas fa-comment",
         "django_celery_results.taskresult": "fas fa-tasks",
     },
     # Icons that are used when one is not manually specified
