@@ -4,6 +4,7 @@ django==4.1.7
 django-celery-results
 django-jazzmin==2.6.0
 django-upgrade==1.13.0
+djangorestframework
 gunicorn==20.1.0
 psycopg2-binary==2.9.5
 pyupgrade==3.3.1

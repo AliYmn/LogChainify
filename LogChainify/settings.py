@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'celery',
     'log',
-    'blog',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -280,4 +280,5 @@ JAZZMIN_UI_TWEAKS = {
 
 CELERY_BROKER_URL = 'redis://redis:6379'
 CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_EXTENDED = True
 CELERY_TRACK_STARTED = True

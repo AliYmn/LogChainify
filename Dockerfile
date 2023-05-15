@@ -15,6 +15,6 @@ COPY . .
 ENV DJANGO_SETTINGS_MODULE LogChainify.settings
 ENV PYTHONUNBUFFERED 1
 
-EXPOSE 8000
+EXPOSE 8001
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "LogChainify.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "LogChainify.wsgi:application"]

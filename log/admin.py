@@ -8,8 +8,8 @@ from .models import LogEntry, UserProfile
 
 @admin.register(LogEntry)
 class LogEntryAdmin(admin.ModelAdmin):
-    list_display = ('user_profile', 'data', 'get_link', 'blockchain', 'created_at', 'updated_at')
-    search_fields = ('user_profile',)
+    list_display = ('data', 'get_link', 'blockchain', 'created_at', 'updated_at')
+    search_fields = ()
     exclude = ('data_hash',)
 
     def has_delete_permission(self, request, obj=None):
@@ -24,10 +24,12 @@ class LogEntryAdmin(admin.ModelAdmin):
     @staticmethod
     def get_link(obj):
         if obj.data_hash == "Pending...":
-            html_text = '<b style="background-color: #151515 ; color: orange; padding: 6px 10px; text-align: center; border-radius: 5px;">Pending...</b>'
+            html_text = (
+                '<b style="color: orange; padding: 6px 10px; text-align: center; border-radius: 5px;">Pending...</b>'
+            )
             return format_html(html_text, obj.data_hash)
         else:
-            html_text = '<b style="background-color: #151515 ; color: green; padding: 6px 10px; text-align: center; border-radius: 5px;">\
+            html_text = '<b style="color: green; padding: 6px 10px; text-align: center; border-radius: 5px;">\
                         <a href="https://sepolia.etherscan.io/tx/{}">Link Created</a></b>'
             return format_html(html_text, obj.data_hash)
 
